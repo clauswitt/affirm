@@ -26,16 +26,38 @@ exports['affirm'] = {
     done();
   },
   'no args': function(test) {
-    test.expect(4);
-    // tests here
-    test.equal(affirm.assertEquals(1,2), false, 'one does not equal two');
-    test.equal(affirm.assertEquals(2,2), true, 'two does equal two');
+    test.expect(3);
+    
+    var obj1 = {};
+    var obj2 = {test: "string"};
+    var obj3 = {hest: {test: "string"}};
 
-    var array1 = [1, 2];
-    var array2 = [1, 2];
-    var array3 = array1;
-    test.equal(affirm.assertIdentical(array1, array2), false, 'Not identical');
-    test.equal(affirm.assertIdentical(array1, array3), true, 'Identical');
+
+    test.throws(
+      function() {
+        affirm.assertObjectHasKey(obj1,"test");
+      }, 
+      Error, 
+      'obj1 does not have a test key'
+    );
+
+    test.doesNotThrow(
+      function() {
+        affirm.assertObjectHasKey(obj2,"test");
+      }, 
+      Error, 
+      'obj2 does have a test key'
+    );
+
+    test.throws(
+      function() {
+        affirm.assertObjectHasKey(obj3,"test");
+      }, 
+      Error, 
+      'obj3 does not have a test key, it is nested'
+    );
+    
+
     test.done();
   }
 };
