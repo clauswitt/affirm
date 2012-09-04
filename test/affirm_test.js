@@ -26,9 +26,10 @@ exports['awesome'] = {
     done();
   },
   'no args': function(test) {
-    test.expect(1);
+    test.expect(2);
     // tests here
-    test.equal(affirm.awesome(), 'awesome', 'should be awesome.');
+    test.equal(affirm.assertEquals(1,2), false, 'one does not equal two');
+    test.equal(affirm.assertEquals(2,2), true, 'two does equal two');
     test.done();
   }
 };
