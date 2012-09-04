@@ -1,0 +1,15 @@
+{
+  "author": "Claus Witt <wittnezz@gmail.com> (http://clauswitt.com)",
+  "name": "affirm",
+  "description": "Library for assertions",
+  "version": "0.0.1",
+  "repository": {
+    "url": "git@github.com:clauswitt/affirm.git"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
