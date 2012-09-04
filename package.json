@@ -1,15 +1,35 @@
 {
-  "author": "Claus Witt <wittnezz@gmail.com> (http://clauswitt.com)",
   "name": "affirm",
   "description": "Library for assertions",
   "version": "0.0.1",
-  "repository": {
-    "url": "git@github.com:clauswitt/affirm.git"
+  "homepage": "https://github.com/clauswitt/affirm",
+  "author": {
+    "name": "Claus Witt",
+    "email": "wittnezz@gmail.com",
+    "url": "http://clauswitt.com/"
   },
-  "dependencies": {},
-  "devDependencies": {},
-  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/clauswitt/affirm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clauswitt/affirm/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/clauswitt/affirm/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/affirm",
   "engines": {
-    "node": "*"
-  }
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.12"
+  },
+  "keywords": []
 }
