@@ -1,13 +1,5 @@
 var affirm = require('../lib/affirm.js');
 
-/*
-assertIsArray: function(a, msg) 
-assertArrayLength: function(a, length, msg) 
-assertArrayMaxLength: function(a, length, msg) 
-assertArrayMinLength: function(a, length, msg)
-assertArrayLengthInRange: function(a, min, max, msg)
-*/
-
 exports['affirm'] = {
   setUp: function(done) {
     // setup here

@@ -1,15 +1,5 @@
 var affirm = require('../lib/affirm.js');
 
-/*
-assertIsString: function(a, allowNumbers, msg)
-assertStringMaxLength: function(a, length, allowNumbers, msg) 
-assertStringMinLength: function(a, length, allowNumbers, msg)
-assertStringLengthInRange: function(a, min, max, allowNumbers, msg) 
-assertStringStartsWith: function(a, start, msg) 
-assertStringEndsWith: function(a, end, msg) 
-assertStringMatches: function(a, match, msg)
-*/
-
 exports['affirm'] = {
   setUp: function(done) {
     // setup here

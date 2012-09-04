@@ -1,12 +1,5 @@
 var affirm = require('../lib/affirm.js');
 
-/*
-assertIsNumber: function(a, msg)
-assertNumberMinimum: function(a, min, msg)
-assertNumberMaximum: function(a, max, msg)
-assertNumberInRange: function(a, min, max, msg)
-*/
-
 exports['affirm'] = {
   setUp: function(done) {
     // setup here
