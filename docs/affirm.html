@@ -7,13 +7,19 @@
 <span class="cm"> */</span>
 
 
+<span class="kd">var</span> <span class="nx">chainable</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">throwError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+
 <span class="kd">function</span> <span class="nx">assert</span><span class="p">(</span><span class="nx">bool</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span> <span class="o">||</span> <span class="s1">&#39;Assert failed&#39;</span><span class="p">;</span>
-  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">bool</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">bool</span> <span class="o">&amp;&amp;</span> <span class="nx">throwError</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">chainable</span><span class="p">)</span> <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
   <span class="k">return</span> <span class="nx">bool</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Assert that two variables have equal value</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">assertEquals</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Assert that two variables have equal value</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">assertEquals</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">assert</span><span class="p">((</span><span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span><span class="p">),</span> <span class="nx">msg</span><span class="p">);</span>
   <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Assert that two variables are identical (references the same object)</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">assertIdentical</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">assert</span><span class="p">((</span><span class="nx">a</span> <span class="o">===</span> <span class="nx">b</span><span class="p">),</span> <span class="nx">msg</span><span class="p">);</span>
@@ -66,8 +72,14 @@
         <span class="k">this</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
       <span class="p">}</span>
     <span class="p">}</span>
+  <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-23">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-23">&#182;</a>               </div>               <p>affirm will default to throw error on assertion failure. Set this to false to get a return value false instead.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">setThrowError</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">throwError</span> <span class="o">=</span> <span class="p">(</span><span class="nx">value</span><span class="o">===</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-24">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-24">&#182;</a>               </div>               <p>affirm will default to a value, if chainable is set, it returns itself instead, allowing to chain assertions. Should not be combined with settings throwError to false (since you will get no result).</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">setChainable</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">chainable</span> <span class="o">=</span> <span class="p">(</span><span class="nx">value</span><span class="o">===</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">}</span>
-
 <span class="p">};</span>
+
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
 
 </pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
