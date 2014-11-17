@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/clauswitt/affirm.svg?branch=master)](https://travis-ci.org/clauswitt/affirm)
+
 # affirm
 
 Library for assertions
